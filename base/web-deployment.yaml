@@ -18,7 +18,7 @@ spec:
       containers:
       - name: nginx
         # 업로드 한 이미지 사용
-        image: petclinic-image-placeholder 
+        image: petclinic-web-placeholder 
         imagePullPolicy: Always
         ports:
         - containerPort: 80
