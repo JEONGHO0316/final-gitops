@@ -1,11 +1,7 @@
-# 파일명: overlays/prod-gcp/ingress-patch.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: petclinic-ingress
+  name: petclinic-ingress  # base/ingress.yaml에 있는 이름과 같아야 함
   annotations:
-    # GCP Ingress 클래스 지정 (필요 시 정적 IP 이름 등 추가 가능)
-    kubernetes.io/ingress.class: "gce"
-spec:
-  # GKE Ingress 컨트롤러 사용
-  ingressClassName: gce
+    # 1. GCP 기본 Ingress 컨트롤러(GCE L7 Load Balancer) 사용
+    kubernetes.io/ingress.class: gce

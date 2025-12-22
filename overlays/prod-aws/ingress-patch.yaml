@@ -1,18 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: petclinic-ingress
+  name: petclinic-ingress  # base/ingress.yaml에 있는 이름과 같아야 함
   annotations:
-    # ALB 설정
+    # 1. 잉그레스 클래스 지정 (필수)
+    kubernetes.io/ingress.class: alb
+    # 2. 인터넷에서 접속 가능하게 설정 (필수)
     alb.ingress.kubernetes.io/scheme: internet-facing
+    # 3. 트래픽을 파드 IP로 직접 전달 (속도 향상 & 필수)
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    alb.ingress.kubernetes.io/load-balancer-name: final-project
-    # 헬스체크 설정
-    alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15'
-    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
-    alb.ingress.kubernetes.io/healthy-threshold-count: '2'
-    alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
-spec:
-  ingressClassName: alb
+    # 4. (선택) 헬스체크 성공 코드 지정
+    alb.ingress.kubernetes.io/success-codes: '200'
