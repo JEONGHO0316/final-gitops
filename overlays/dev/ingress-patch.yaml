@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/success-codes: '200'
 spec:
   rules:
-  - host: dev.petclinic.com
+  - host: 
     http:
       paths:
       - path: /
