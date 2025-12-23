@@ -1,7 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+
+namespace: dev
+
 resources:
 - ../../base
+
+
+patches:
+- path: ingress-patch.yaml
+
 
 # 여기서 별명을 진짜 ECR 주소로 매핑
 images:
