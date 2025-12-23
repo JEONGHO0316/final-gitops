@@ -9,15 +9,3 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/load-balancer-name: final-project-dev
     alb.ingress.kubernetes.io/success-codes: '200'
-spec:
-  rules:
-  - host: 
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: petclinic-service
-            port:
-              number: 80
